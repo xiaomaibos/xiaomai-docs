@@ -7,16 +7,17 @@
 | 表名称   | 说明       | one-to-many                | many-to-one   |
 | -------- | ---------- | -------------------------- | ------------- |
 | user     | 用户信息表 | orders/attenders/addresses |               |
-| show     | 演出信息表 | levels/orders              | city/category |
-| level    | 档次信息表 | tickets                    | show          |
+| program  | 节目信息表 | shows                      | city/category |
+| show     | 场次信息表 | levels/orders              | program       |
+| level    | 票档信息表 | tickets                    | show          |
 | order    | 订单信息表 | tickets                    | user/show     |
 | ticket   | 门票信息表 |                            | order/level   |
 | address  | 收货地址表 |                            | user          |
 | attender | 观影人信息 |                            | user          |
-| city     | 城市信息表 | shows                      |               |
-| category | 类别信息表 | shows                      |               |
+| city     | 城市信息表 | programs                   |               |
+| category | 类别信息表 | programs                   |               |
 
-![](./pic/zwh20210421.png)
+![](./pic/zwh20210422.png)
 
 
 
@@ -24,16 +25,17 @@
 
 * user：用户信息表
 
-| 字段名称  | 类型   | 说明            |
-| --------- | ------ | --------------- |
-| id        | Int    | 统编id          |
-| username  | String | 账户            |
-| password  | String | 密码            |
-| nickname  | String | 昵称            |
-| gender    | Int    | 性别(0:男,1:女) |
-| birthday  | Date   | 生日            |
-| identity  | String | 身份证          |
-| image_url | String | 头像            |
+| 字段名称  | 类型   | 说明                     |
+| --------- | ------ | ------------------------ |
+| id        | Int    | 统编id                   |
+| username  | String | 账户                     |
+| password  | String | 密码                     |
+| nickname  | String | 昵称                     |
+| gender    | Int    | 性别(0:男,1:女)          |
+| birthday  | Date   | 生日                     |
+| identity  | String | 身份证                   |
+| image_url | String | 头像                     |
+| privilege | Int    | 权限(0:normal, 1:system) |
 
 ```
 | orders    | Set\<Order>    | 用户级联的所有订单     |
@@ -41,7 +43,7 @@
 | addresses | Set\<Address>  | 用户级联的所有收货地址 |
 ```
 
-* show：演出信息表
+* program：节目信息表
 
 | 字段名称    | 类型   | 说明           |
 | ----------- | ------ | -------------- |
@@ -60,11 +62,20 @@
 | category_id | Int    | 演出从属的类别 |
 
 ```
-| levels     | Set\<Level>   | 演出包含的所有档次  |
-| orders     | Set\<Order>   | 演出级联的所有订单  |
+| levels     | Set\<Level>   | 节目包含的所有票档  |
+| orders     | Set\<Order>   | 节目级联的所有订单  |
 ```
 
-* level：档次信息表
+* show：场次信息表
+
+| 字段名称 | 类型 | 说明   |
+| -------- | ---- | ------ |
+| id       | Int  | 统编id |
+|          |      |        |
+
+
+
+* level：票档信息表
 
 | 字段名称    | 类型   | 说明             |
 | ----------- | ------ | ---------------- |
@@ -77,10 +88,10 @@
 | left_count  | Int    | 门票剩余         |
 | limit_count | Int    | 购票限制         |
 | seat        | String | 选座情况         |
-| show_id     | Int    | 档次从属的演出   |
+| program_id  | Int    | 票档从属的节目   |
 
 ```
-| tickets     | Set\<Ticket> | 档次级联的门票   |
+| tickets     | Set\<Ticket> | 票档级联的门票   |
 ```
 
 * order：订单表
@@ -98,7 +109,7 @@
 | linknum     | String | 联系电话                               |
 | attender    | String | 观影人                                 |
 | user_id     | Int    | 订单从属的用户                         |
-| show_id     | Int    | 订单从属的演出                         |
+| program_id  | Int    | 订单从属的节目                         |
 
 ```
 | tickets     | Set\<Ticket> | 订单级联的所有门票                     |
@@ -145,7 +156,7 @@
 | count    | Int    | 演出数量 |
 
 ```
-| shows    | Set\<Show> | 城市级联的所有演出 |
+| programs    | Set\<Program> | 城市级联的所有节目 |
 ```
 
 * category：类别信息表
@@ -157,6 +168,6 @@
 | count    | Int    | 演出数量 |
 
 ```
-| shows    | Set\<Show> | 类别级联的所有演出 |
+| programs    | Set\<Program> | 类别级联的所有节目 |
 ```
 

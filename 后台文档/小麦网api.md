@@ -1,6 +1,6 @@
 # 后台接口API
 
-后台接口分为三个功能模块：门户模块，用户模块，管理员模块
+后台依据权限划分功能模块：门户模块，用户模块，系统模块
 
 ### 一、门户功能模块
 
@@ -12,15 +12,15 @@
 | 查询类别列表 | /category                                                    | get      |
 | 查询演出列表 | /show?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
 | 获取演出详情 | /show/{showId}                                               | get      |
-| 查询票档列表 | /show/level?showId=                                          | get      |
+| 查询票档列表 | /level?showId=                                               | get      |
 | 账户登入     | /login                                                       | post     |
 | 账户注册     | /register                                                    | post     |
 
 
 
-#### 查询城市列表api
+#### 1. 查询城市列表api
 
-接口说明：
+接口说明：前端访问首页和分类页面时需要获取城市列表，后端对城市列表排序处理
 
 接口地址：https://www.xiaomai.ink/city
 
@@ -69,9 +69,9 @@
 
 
 
-#### 查询类别列表api
+#### 2. 查询类别列表api
 
-接口说明：
+接口说明：前端访问分类页面时需获取类别列表，后端对类别列表排序处理
 
 接口地址：https://www.xiaomai.ink/category
 
@@ -107,7 +107,7 @@
 
 
 
-#### 查询演出列表api
+#### 3. 查询演出列表api
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
@@ -120,8 +120,8 @@
 | 参数名称  | 参数位置 | 类型   | 描述       |
 | --------- | -------- | ------ | ---------- |
 | keyword   | param    | String | 检索关键字 |
-| city      | param    | Int    | 城市编号   |
-| category  | param    | Int    | 类别编号   |
+| city      | param    | Int    | 城市id     |
+| category  | param    | Int    | 类别id     |
 | startTime | param    | String | 开始时间   |
 | endTime   | param    | String | 结束时间   |
 | order     | param    | Int    | 排序规则   |
@@ -133,20 +133,18 @@
 ```json
 {
   "data": {
-    "total":1
-    "show_list":[{
+    "total":1,
+    "shows":[{
     		"id": "12",
     		"title": "四月是你的谎言",
     		"low_price": "120",
     		"high_price": "480",
     		"start_time": "2021-05-15",
     		"end_time": "2021-07-20",
-    		"category": "2",
-    		"category_info": "音乐会",
-    		"city": "3",
-    		"city_info": "深圳",
+    		"category": "音乐会",
+    		"city": "深圳",
     		"address": "深圳音乐厅",
-    		"image_url": ""
+    		"image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp"
 	  	}]
   },
   "success": true,
@@ -156,11 +154,39 @@
 
 
 
-查询类别列表
+#### 4. 获取演出详情api
+
+接口说明：查询演出详细信息，包括演出的所有票档信息
+
+接口地址：https://xiaomai//show/{showId}
+
+请求方式：get
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明 |
+| -------- | -------- | ---- | ---- |
+| showId   | path     | Int  |      |
+
+返回示例：
+
+```json
+{
+  "data": {
+    
+  },
+  "success": true,
+  "message": "请求成功"
+}
+```
+
+
+
+
 
 ### 二、用户功能模块
 
-* 接口概览
+#### 接口概览
 
 获取个人信息get：/user/userInfo?userId=
 
