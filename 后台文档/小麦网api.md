@@ -10,8 +10,8 @@
 | ------------ | ------------------------------------------------------------ | -------- |
 | 查询城市列表 | /city                                                        | get      |
 | 查询类别列表 | /category                                                    | get      |
-| 查询演出列表 | /show?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
-| 获取演出详情 | /show/{showId}                                               | get      |
+| 查询节目列表 | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| 获取节目详情 | /program/{programId}                                         | get      |
 | 查询票档列表 | /level?showId=                                               | get      |
 | 账户登入     | /login                                                       | post     |
 | 账户注册     | /register                                                    | post     |
@@ -107,7 +107,7 @@
 
 
 
-#### 3. 查询演出列表api
+#### 3. 查询节目列表api
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
@@ -119,34 +119,65 @@
 
 | 参数名称  | 参数位置 | 类型   | 描述       |
 | --------- | -------- | ------ | ---------- |
-| keyword   | param    | String | 检索关键字 |
-| city      | param    | Int    | 城市id     |
-| category  | param    | Int    | 类别id     |
-| startTime | param    | String | 开始时间   |
-| endTime   | param    | String | 结束时间   |
-| order     | param    | Int    | 排序规则   |
-| pageSize  | param    | Int    | 页面大小   |
-| currPage  | param    | Int    | 当前页号   |
+| keyword   | query    | String | 检索关键字 |
+| city      | query    | Int    | 城市id     |
+| category  | query    | Int    | 类别id     |
+| startTime | query    | String | 开始时间   |
+| endTime   | query    | String | 结束时间   |
+| order     | query    | Int    | 排序规则   |
+| pageSize  | query    | Int    | 页面大小   |
+| currPage  | query    | Int    | 当前页号   |
 
 返回示例
 
 ```json
 {
   "data": {
-    "total":1,
-    "shows":[{
-    		"id": "12",
-    		"title": "四月是你的谎言",
-    		"low_price": "120",
-    		"high_price": "480",
-    		"start_time": "2021-05-15",
-    		"end_time": "2021-07-20",
-    		"category": "音乐会",
-    		"city": "深圳",
-    		"address": "深圳音乐厅",
-    		"image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp"
-	  	}]
-  },
+    "total": 2,
+    "programs": [
+      {
+        "id": 10,
+        "title": "【上海】四月是你的谎言",
+        "low_price": "160",
+        "high_price": "280",
+        "start_time": "2021-07-04",
+        "end_time": "2021-07-05",
+        "address": "上海大剧院",
+        "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
+        "city": {
+          "id": 2,
+          "name": "上海",
+          "code": "200000",
+          "count": 23
+        },
+        "category": {
+          "id": 1,
+          "name": "音乐会",
+          "count": 52
+        }
+      },{
+        "id": 12,
+        "title": "【深圳】四月是你的谎言",
+        "low_price": "120",
+        "high_price": "340",
+        "start_time": "2021-05-14",
+        "end_time": "2021-05-24",
+        "address": "深圳音乐厅",
+        "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
+        "city": {
+          "id": 3,
+          "name": "深圳",
+          "code": "518000",
+          "count": 2
+        },
+        "category": {
+          "id": 1,
+          "name": "音乐会",
+          "count": 52
+        }
+      }
+    ]
+  }
   "success": true,
   "message": "请求成功"
 }
@@ -154,26 +185,57 @@
 
 
 
-#### 4. 获取演出详情api
+#### 4. 获取节目详情api
 
-接口说明：查询演出详细信息，包括演出的所有票档信息
+接口说明：查询节目详细信息，包括节目的所有场次信息
 
-接口地址：https://xiaomai//show/{showId}
+接口地址：https://xiaomai/program/{programId}
 
 请求方式：get
 
 接口请求参数
 
-| 参数名称 | 参数位置 | 类型 | 说明 |
-| -------- | -------- | ---- | ---- |
-| showId   | path     | Int  |      |
+| 参数名称  | 参数位置 | 类型 | 说明   |
+| --------- | -------- | ---- | ------ |
+| programId | path     | Int  | 节目id |
 
 返回示例：
 
 ```json
 {
   "data": {
-    
+    "id": 10,
+    "title": "【上海】四月是你的谎言",
+    "low_price": "160",
+    "high_price": "280",
+    "start_time": "2021-07-04",
+    "end_time": "2021-07-05",
+    "address": "上海大剧院",
+    "explain": "不支持退票...",
+    "detail": "演出介绍...",
+    "notice": "需要提前入场...",
+    "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
+    "city": {
+      "id": 2,
+      "name": "上海",
+      "code": "200000",
+      "count": 23
+    },
+    "category": {
+      "id": 1,
+      "name": "音乐会",
+      "count": 52
+    },
+    "shows": [{
+        "id": 1,
+        "name": "2021-07-04 14:00",
+        "time": 1619889458483,
+      },{
+        "id": 2,
+        "name": "2021-07-05 14:00",
+        "time": 1627089458483
+      }
+    ]
   },
   "success": true,
   "message": "请求成功"
@@ -181,6 +243,61 @@
 ```
 
 
+
+#### 5. 查询票档列表api
+
+接口说明：
+
+接口地址：https://www.xiaomai/level?showId=
+
+请求方式：get
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明   |
+| -------- | -------- | ---- | ------ |
+| showId   | query    | Int  | 场次id |
+
+返回示例
+
+```json
+{
+  "data": {
+    "total": 3,
+    "levels": [{
+        "id": "111",
+        "name": "c档(160.0)",
+      	"price": 160.0,
+      	"total_count": 20,
+      	"left_count": 17,
+      	"limit_count": 6,
+      	"seat": "10011000000000000000",
+      	"show_id": 1
+      },{
+        "id": "112",
+        "name": "b档(210.0)",
+        "price": 210.0,
+        "total_count": 20,
+      	"left_count": 17,
+      	"limit_count": 6,
+      	"seat": "10011000000000000000",
+        "show_id": 1
+      },{
+        "id": "115",
+        "name": "a档(280.0)",
+        "price": 280.0,
+        "total_count": 20,
+      	"left_count": 17,
+      	"limit_count": 6,
+      	"seat": "10010000100000000000",
+        "show_id": 1
+      }
+    ]
+  },
+  "success": true,
+  "message": "请求成功"
+}
+```
 
 
 

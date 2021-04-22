@@ -157,7 +157,7 @@
 | id       | Int    | 统编id   |
 | name     | String | 城市名   |
 | code     | String | 城市编码 |
-| count    | Int    | 演出数量 |
+| count    | Int    | 节目数量 |
 
 ```
 | programs    | Set\<Program> | 城市级联的所有节目 |
@@ -169,7 +169,7 @@
 | -------- | ------ | -------- |
 | id       | Int    | 统编id   |
 | name     | String | 类别名   |
-| count    | Int    | 演出数量 |
+| count    | Int    | 节目数量 |
 
 ```
 | programs    | Set\<Program> | 类别级联的所有节目 |
