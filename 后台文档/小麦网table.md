@@ -39,7 +39,7 @@
 
 ```
 | orders    | Set\<Order>    | 用户级联的所有订单     |
-| attenders | Set\<Attender> | 用户级联的所有参加者   |
+| attenders | Set\<Attender> | 用户级联的所有观演人   |
 | addresses | Set\<Address>  | 用户级联的所有收货地址 |
 ```
 
@@ -57,38 +57,41 @@
 | explain     | String | 说明           |
 | detail      | String | 详情           |
 | notice      | String | 须知           |
-| image_url   | String | 演出图片       |
-| city_id     | Int    | 演出从属的城市 |
-| category_id | Int    | 演出从属的类别 |
+| image_url   | String | 节目图片       |
+| city_id     | Int    | 节目从属的城市 |
+| category_id | Int    | 节目从属的类别 |
 
 ```
-| levels     | Set\<Level>   | 节目包含的所有票档  |
-| orders     | Set\<Order>   | 节目级联的所有订单  |
+| shows     | Set\<Show>   | 节目包含的所有场次  |
 ```
 
 * show：场次信息表
 
-| 字段名称 | 类型 | 说明   |
-| -------- | ---- | ------ |
-| id       | Int  | 统编id |
-|          |      |        |
+| 字段名称   | 类型   | 说明           |
+| ---------- | ------ | -------------- |
+| id         | Int    | 统编id         |
+| name       | String | 场次名         |
+| time       | Date   | 时间           |
+| program_id | Int    | 场次从属的节目 |
 
+```
+| levels     | Set\<Level> | 场次级联的所有票档 |
+| orders     | Set\<Order> | 场次级联的所有订单 |
+```
 
 
 * level：票档信息表
 
-| 字段名称    | 类型   | 说明             |
-| ----------- | ------ | ---------------- |
-| id          | Int    | 统编id           |
-| time        | Date   | 时间             |
-| time_info   | String | 时间描述（场次） |
-| price       | Int    | 价格             |
-| price_info  | String | 价格描述（票档） |
-| total_count | Int    | 门票总数         |
-| left_count  | Int    | 门票剩余         |
-| limit_count | Int    | 购票限制         |
-| seat        | String | 选座情况         |
-| program_id  | Int    | 票档从属的节目   |
+| 字段名称    | 类型   | 说明           |
+| ----------- | ------ | -------------- |
+| id          | Int    | 统编id         |
+| name        | String | 票档名         |
+| price       | Int    | 价格           |
+| total_count | Int    | 该票档的总票数 |
+| left_count  | Int    | 该票档的票剩余 |
+| limit_count | Int    | 购票限制       |
+| seat        | String | 选座情况       |
+| show_id     | Int    | 票档从属的场次 |
 
 ```
 | tickets     | Set\<Ticket> | 票档级联的门票   |
@@ -109,7 +112,7 @@
 | linknum     | String | 联系电话                               |
 | attender    | String | 观影人                                 |
 | user_id     | Int    | 订单从属的用户                         |
-| program_id  | Int    | 订单从属的节目                         |
+| show_id     | Int    | 订单从属的场次                         |
 
 ```
 | tickets     | Set\<Ticket> | 订单级联的所有门票                     |
@@ -117,14 +120,15 @@
 
 * ticket：门票信息表
 
-| 字段名称  | 类型   | 说明           |
-| --------- | ------ | -------------- |
-| id        | Int    | 统编id         |
-| price     | Int    | 门票价格       |
-| seat_num  | Int    | 座位编号       |
-| seat_info | String | 座位信息       |
-| order_id  | Int    | 门票从属的订单 |
-| grade_id  | Int    | 门票从属的档次 |
+| 字段名称  | 类型   | 说明                     |
+| --------- | ------ | ------------------------ |
+| id        | Int    | 统编id                   |
+| price     | Int    | 门票价格                 |
+| seat_num  | Int    | 座位编号                 |
+| seat_info | String | 座位信息                 |
+| valid     | Int    | 是否有效(0:无效, 1:有效) |
+| order_id  | Int    | 门票从属的订单           |
+| level_id  | Int    | 门票从属的票档           |
 
 * address：收货地址表
 
