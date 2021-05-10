@@ -6,15 +6,15 @@
 
 #### 接口概览
 
-| 接口名称                               | 接口地址                                                     | 请求方式 |
-| -------------------------------------- | ------------------------------------------------------------ | -------- |
-| [查询城市列表](####1. 查询城市列表api) | /city                                                        | get      |
-| [查询类别列表](####2. 查询类别列表api) | /category                                                    | get      |
-| [查询节目列表](####3. 查询节目列表api) | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
-| [获取节目详情](####4. 获取节目详情api) | /program/{programId}                                         | get      |
-| [查询票档列表](####5. 查询票档列表api) | /level?showId=                                               | get      |
-| [账户登入](####6. 账户登入api)         | /login                                                       | post     |
-| [账户注册](####7. 账户注册api)         | /register                                                    | post     |
+| 接口名称                            | 接口地址                                                     | 请求方式 |
+| ----------------------------------- | ------------------------------------------------------------ | -------- |
+| [查询城市列表](#1. 查询城市列表api) | /city                                                        | get      |
+| [查询类别列表](#2. 查询类别列表api) | /category                                                    | get      |
+| [查询节目列表](#3. 查询节目列表api) | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| [获取节目详情](#4. 获取节目详情api) | /program/{programId}                                         | get      |
+| [查询票档列表](#5. 查询票档列表api) | /level?showId=                                               | get      |
+| [账户登入](#6. 账户登入api)         | /login                                                       | post     |
+| [账户注册](#7. 账户注册api)         | /register                                                    | post     |
 
 
 
