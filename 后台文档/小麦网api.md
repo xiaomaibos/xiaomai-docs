@@ -6,15 +6,15 @@
 
 #### 接口概览
 
-| 接口名称     | 接口地址                                                     | 请求方式 |
-| ------------ | ------------------------------------------------------------ | -------- |
-| 查询城市列表 | /city                                                        | get      |
-| 查询类别列表 | /category                                                    | get      |
-| 查询节目列表 | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
-| 获取节目详情 | /program/{programId}                                         | get      |
-| 查询票档列表 | /level?showId=                                               | get      |
-| 账户登入     | /login                                                       | post     |
-| 账户注册     | /register                                                    | post     |
+| 接口名称                               | 接口地址                                                     | 请求方式 |
+| -------------------------------------- | ------------------------------------------------------------ | -------- |
+| [查询城市列表](####1. 查询城市列表api) | /city                                                        | get      |
+| [查询类别列表](####2. 查询类别列表api) | /category                                                    | get      |
+| [查询节目列表](####3. 查询节目列表api) | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| [获取节目详情](####4. 获取节目详情api) | /program/{programId}                                         | get      |
+| [查询票档列表](####5. 查询票档列表api) | /level?showId=                                               | get      |
+| [账户登入](####6. 账户登入api)         | /login                                                       | post     |
+| [账户注册](####7. 账户注册api)         | /register                                                    | post     |
 
 
 
@@ -293,6 +293,82 @@
   },
   "success": true,
   "message": "请求成功"
+}
+```
+
+
+
+#### 6. 账户登入api
+
+接口说明：前端提交登入表单，后端进行身份认证
+
+接口地址：https://www.xiaomai/login
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型   | 说明     |
+| -------- | -------- | ------ | -------- |
+| username | body     | String | 账户名   |
+| password | body     | String | 账户密码 |
+
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "登入成功"
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "用户不存在"
+}
+```
+
+
+
+#### 7. 账户注册api
+
+接口说明：前端提交表单，由后端进行账户注册
+
+接口地址：https://www.xiaomai/register
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称  | 参数位置 | 类型   | 说明                     |
+| --------- | -------- | ------ | ------------------------ |
+| username  | body     | String | 账户名                   |
+| password  | body     | String | 账户密码                 |
+| nickname  | body     | String | 昵称                     |
+| gender    | body     | Int    | 性别(0:男,1:女)          |
+| birthday  | body     | String | 生日                     |
+| identity  | body     | String | 身份证                   |
+| image_url | body     | String | 头像                     |
+| privilege | body     | Int    | 权限(0:normal, 1:system) |
+
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "注册成功"
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "用户名过长"
 }
 ```
 
