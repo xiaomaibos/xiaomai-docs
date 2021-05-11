@@ -111,7 +111,7 @@
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
-接口地址：https://www.xiaomai.ink/show?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
+接口地址：https://www.xiaomai.ink/show/findShowWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
 
 请求方式：get
 
