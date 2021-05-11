@@ -188,7 +188,7 @@
 
 接口说明：查询节目详细信息，包括节目的所有场次信息
 
-接口地址：https://xiaomai/program/{programId}
+接口地址：https://xiaomai/program/getProgram?programId=
 
 请求方式：get
 
@@ -302,7 +302,7 @@
 
 接口说明：前端提交登入表单，后端进行身份认证
 
-接口地址：https://www.xiaomai/login
+接口地址：https://www.xiaomai/user/doLogin
 
 请求方式：post
 
@@ -335,7 +335,7 @@
 
 接口说明：前端提交表单，由后端进行账户注册
 
-接口地址：https://www.xiaomai/register
+接口地址：https://www.xiaomai/user/doRegister
 
 请求方式：post
 
