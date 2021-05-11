@@ -73,7 +73,7 @@
 
 接口说明：前端访问分类页面时需获取类别列表，后端对类别列表排序处理
 
-接口地址：https://www.xiaomai.ink/category
+接口地址：https://www.xiaomai.ink/category/getCategoryList
 
 请求方式：get
 
