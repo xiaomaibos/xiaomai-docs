@@ -8,21 +8,19 @@
 
 | 接口名称                            | 接口地址                                                     | 请求方式 |
 | ----------------------------------- | ------------------------------------------------------------ | -------- |
-| [查询城市列表](#1. 查询城市列表api) | /city                                                        | get      |
-| [查询类别列表](#2. 查询类别列表api) | /category                                                    | get      |
+| [查询城市列表](#1. 查询城市列表api) | /city/getCityList                                                        | get      |
+| [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                                   | get      |
 | [查询节目列表](#3. 查询节目列表api) | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
 | [获取节目详情](#4. 获取节目详情api) | /program/{programId}                                         | get      |
 | [查询票档列表](#5. 查询票档列表api) | /level?showId=                                               | get      |
-| [账户登入](#6. 账户登入api)         | /login                                                       | post     |
-| [账户注册](#7. 账户注册api)         | /register                                                    | post     |
-
-
+| [账户登入](#6. 账户登入api)         | /user/doLogin                                                       | post     |
+| [账户注册](#7. 账户注册api)         | /user/doRegister                                                    | post     |
 
 #### 1. 查询城市列表api
 
 接口说明：前端访问首页和分类页面时需要获取城市列表，后端对城市列表排序处理
 
-接口地址：https://www.xiaomai.ink/city
+接口地址：https://www.xiaomai.ink/city/getCityList
 
 请求方式：get
 
@@ -34,17 +32,20 @@
 {
   "data": {
     "total": 3,
-    "citys": [{
+    "citys": [
+      {
         "id": "2",
         "name": "上海",
         "code": "200000",
-        "count": 23,
-      },{
+        "count": 23
+      },
+      {
         "id": "1",
         "name": "北京",
         "code": "100000",
         "count": 12
-      },{
+      },
+      {
         "id": "3",
         "name": "深圳",
         "code": "518000",
@@ -67,8 +68,6 @@
 }
 ```
 
-
-
 #### 2. 查询类别列表api
 
 接口说明：前端访问分类页面时需获取类别列表，后端对类别列表排序处理
@@ -85,15 +84,18 @@
 {
   "data": {
     "total": 3,
-    "citys": [{
+    "citys": [
+      {
         "id": "3",
         "name": "话剧歌剧",
         "count": 120
-      },{
+      },
+      {
         "id": "1",
         "name": "音乐会",
         "count": 52
-      },{
+      },
+      {
         "id": "2",
         "name": "曲苑杂谈",
         "count": 33
@@ -104,8 +106,6 @@
   "message": "请求成功"
 }
 ```
-
-
 
 #### 3. 查询节目列表api
 
@@ -155,7 +155,8 @@
           "name": "音乐会",
           "count": 52
         }
-      },{
+      },
+      {
         "id": 12,
         "title": "【深圳】四月是你的谎言",
         "low_price": "120",
@@ -182,8 +183,6 @@
   "message": "请求成功"
 }
 ```
-
-
 
 #### 4. 获取节目详情api
 
@@ -226,11 +225,13 @@
       "name": "音乐会",
       "count": 52
     },
-    "shows": [{
+    "shows": [
+      {
         "id": 1,
         "name": "2021-07-04 14:00",
-        "time": 1619889458483,
-      },{
+        "time": 1619889458483
+      },
+      {
         "id": 2,
         "name": "2021-07-05 14:00",
         "time": 1627089458483
@@ -241,8 +242,6 @@
   "message": "请求成功"
 }
 ```
-
-
 
 #### 5. 查询票档列表api
 
@@ -264,30 +263,33 @@
 {
   "data": {
     "total": 3,
-    "levels": [{
+    "levels": [
+      {
         "id": "111",
         "name": "c档(160.0)",
-      	"price": 160.0,
-      	"total_count": 20,
-      	"left_count": 17,
-      	"limit_count": 6,
-      	"seat": "10011000000000000000"
-      },{
+        "price": 160.0,
+        "total_count": 20,
+        "left_count": 17,
+        "limit_count": 6,
+        "seat": "10011000000000000000"
+      },
+      {
         "id": "112",
         "name": "b档(210.0)",
         "price": 210.0,
         "total_count": 20,
-      	"left_count": 17,
-      	"limit_count": 6,
-      	"seat": "10011000000000000000"
-      },{
+        "left_count": 17,
+        "limit_count": 6,
+        "seat": "10011000000000000000"
+      },
+      {
         "id": "115",
         "name": "a档(280.0)",
         "price": 280.0,
         "total_count": 20,
-      	"left_count": 17,
-      	"limit_count": 6,
-      	"seat": "10010000100000000000"
+        "left_count": 17,
+        "limit_count": 6,
+        "seat": "10010000100000000000"
       }
     ]
   },
@@ -295,8 +297,6 @@
   "message": "请求成功"
 }
 ```
-
-
 
 #### 6. 账户登入api
 
@@ -330,8 +330,6 @@
   "message": "用户不存在"
 }
 ```
-
-
 
 #### 7. 账户注册api
 
@@ -372,8 +370,6 @@
 }
 ```
 
-
-
 ### 二、用户功能模块
 
 #### 接口概览
@@ -408,8 +404,6 @@
 
 修改观影人put：/user/attender
 
-
-
 查询订单列表
 
 获取订单
@@ -418,13 +412,7 @@
 
 修改订单状态
 
-
-
 ### 三、管理员功能模块
-
-
-
-
 
 ---
 
