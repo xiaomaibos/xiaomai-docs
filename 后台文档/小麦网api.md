@@ -405,7 +405,7 @@
 | gender    | body     | Int    | 性别(0:男,1:女)          |
 | birthday  | body     | String | 生日(yyyy-MM-dd)         |
 | identity  | body     | String | 身份证                   |
-| image_url | body     | String | 头像                     |
+| imageUrl  | body     | String | 头像                     |
 | privilege | body     | Int    | 权限(0:normal, 1:system) |
 
 返回示例1：
@@ -455,7 +455,7 @@
 
 #### 1. 获取个人信息api
 
-接口说明：获取个人详细信息
+接口说明：获取个人详细信息，由后端限制访问权限
 
 接口地址：http://xiaomai.flyme.ink/user/getUser?userId=
 
@@ -495,7 +495,7 @@
   "data": null,
   "success": false,
   "message": "权限不足",
-  "code": 0
+  "code": 300
 }
 ```
 
@@ -504,13 +504,60 @@
 | code | messge   | success |
 | ---- | -------- | ------- |
 | 0    | 请求成功 | true    |
-| 200  | 权限不足 | false   |
+| 300  | 权限不足 | false   |
 | 301  | 非法参数 | false   |
 | 999  | 系统异常 | false   |
 
+#### 2. 修改个人信息api
 
+接口说明：前段提交表单，后端限制访问权限，并修改个人信息
 
-修改个人信息put：/user/editUser
+接口地址：http://xiaomai.flyme.ink/user/editUser
+
+请求方式：put
+
+接口请求参数
+
+| 参数名称  | 参数位置 | 类型   | 说明                     |
+| --------- | -------- | ------ | ------------------------ |
+| id        | body     | Int    | 用户id                   |
+| password  | body     | String | 密码                     |
+| nickname  | body     | String | 昵称                     |
+| gender    | body     | Int    | 性别(0:男,1:女)          |
+| birthday  | body     | String | 生日                     |
+| identity  | body     | String | 身份证                   |
+| imageUrl  | body     | String | 头像                     |
+| privilege | body     | Int    | 权限(0:normal, 1:system) |
+
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "提交成功",
+  "code": 0
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "权限不足",
+  "code": 300
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 提交成功 | true    |
+| 201  | 密码为空 | false   |
+| 300  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
 
 --
 
