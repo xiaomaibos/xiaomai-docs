@@ -8,13 +8,13 @@
 
 | 接口名称                            | 接口地址                                                     | 请求方式 |
 | ----------------------------------- | ------------------------------------------------------------ | -------- |
-| [查询城市列表](#1. 查询城市列表api) | /city/getCityList                                                        | get      |
-| [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                                   | get      |
-| [查询节目列表](#3. 查询节目列表api) | /program?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
-| [获取节目详情](#4. 获取节目详情api) | /program/{programId}                                         | get      |
+| [查询城市列表](#1. 查询城市列表api) | /city/getCityList                                            | get      |
+| [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                    | get      |
+| [查询节目列表](#3. 查询节目列表api) | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| [获取节目详情](#4. 获取节目详情api) | /program/getProgram?programId=                               | get      |
 | [查询票档列表](#5. 查询票档列表api) | /level?showId=                                               | get      |
-| [账户登入](#6. 账户登入api)         | /user/doLogin                                                       | post     |
-| [账户注册](#7. 账户注册api)         | /user/doRegister                                                    | post     |
+| [账户登入](#6. 账户登入api)         | /user/doLogin                                                | post     |
+| [账户注册](#7. 账户注册api)         | /user/doRegister                                             | post     |
 
 #### 1. 查询城市列表api
 
@@ -111,7 +111,7 @@
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
-接口地址：https://www.xiaomai.ink/show/findShowWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
+接口地址：https://www.xiaomai.ink/program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
 
 请求方式：get
 
@@ -129,7 +129,7 @@
 | currPage  | query    | Int    | 当前页号   |
 
 返回示例
- 
+
 ```json
 {
   "data": {
