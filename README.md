@@ -4,4 +4,5 @@
 * 后台文档
   * [小麦王api](./后台文档/小麦网api.md)
   * [小麦网table](./后台文档/小麦网table.md)
+  * [小麦网deploy](./后台文档/小麦网deploy.md)
 
