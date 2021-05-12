@@ -430,7 +430,7 @@
 }
 ```
 
-
+返回码：
 
 | code | messge     | success |
 | ---- | ---------- | ------- |
@@ -447,7 +447,7 @@
 
 | 接口名称                            | 接口地址                                                     | 请求方式 |
 | ----------------------------------- | ------------------------------------------------------------ | -------- |
-| [获取个人信息](#1. 获取个人信息api) | /user/getUser?userId=                                        | get      |
+| 获取个人信息                        | /user/getUser?userId=                                        | get      |
 | 修改个人信息                        | /user/editUser                                               | put      |
 | [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                    | get      |
 | [查询节目列表](#3. 查询节目列表api) | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
@@ -457,8 +457,6 @@
 | [账户注册](#7. 账户注册api)         | /user/doRegister                                             | post     |
 
 #### 1. 获取个人信息api
-
-
 
 获取个人信息get：/user/getUser?userId=
 
