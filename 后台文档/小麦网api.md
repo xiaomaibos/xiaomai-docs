@@ -54,7 +54,8 @@
     ]
   },
   "success": true,
-  "message": "请求成功"
+  "message": "请求成功",
+  "code": 0
 }
 ```
 
@@ -64,9 +65,17 @@
 {
   "data": null,
   "success": false,
-  "message": "数据库繁忙"
+  "message": "系统异常",
+  "code": 999
 }
 ```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 999  | 系统异常 | false   |
 
 #### 2. 查询类别列表api
 
@@ -103,9 +112,17 @@
     ]
   },
   "success": true,
-  "message": "请求成功"
+  "message": "请求成功",
+  "code": 0
 }
 ```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 999  | 系统异常 | false   |
 
 #### 3. 查询节目列表api
 
@@ -180,9 +197,18 @@
     ]
   }
   "success": true,
-  "message": "请求成功"
+  "message": "请求成功",
+  "code": 0
 }
 ```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
 
 #### 4. 获取节目详情api
 
@@ -239,9 +265,18 @@
     ]
   },
   "success": true,
-  "message": "请求成功"
+  "message": "请求成功",
+  "code": 0
 }
 ```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
 
 #### 5. 查询票档列表api
 
@@ -294,9 +329,18 @@
     ]
   },
   "success": true,
-  "message": "请求成功"
+  "message": "请求成功",
+  "code": 0
 }
 ```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
 
 #### 6. 账户登入api
 
@@ -318,7 +362,8 @@
 ```json
 {
   "success": true,
-  "message": "登入成功"
+  "message": "登入成功",
+  "code": 0
 }
 ```
 
@@ -327,9 +372,22 @@
 ```json
 {
   "success": false,
-  "message": "用户不存在"
+  "message": "账号不存在",
+  "code": 203
 }
 ```
+
+返回码：
+
+| code | messge         | success |
+| ---- | -------------- | ------- |
+| 0    | 登入成功       | true    |
+| 201  | 账号为空       | false   |
+| 202  | 密码为空       | false   |
+| 203  | 账号不存在     | false   |
+| 204  | 账号或密码错误 | false   |
+| 301  | 非法参数       | false   |
+| 999  | 系统异常       | false   |
 
 #### 7. 账户注册api
 
@@ -357,7 +415,8 @@
 ```json
 {
   "success": true,
-  "message": "注册成功"
+  "message": "注册成功",
+  "code": 0
 }
 ```
 
@@ -366,19 +425,44 @@
 ```json
 {
   "success": false,
-  "message": "用户名过长"
+  "message": "账号已存在",
+  "code": 211
 }
 ```
+
+
+
+| code | messge     | success |
+| ---- | ---------- | ------- |
+| 0    | 注册成功   | true    |
+| 201  | 账号为空   | false   |
+| 202  | 密码为空   | false   |
+| 211  | 账号已存在 | false   |
+| 301  | 非法参数   | false   |
+| 999  | 系统异常   | false   |
 
 ### 二、用户功能模块
 
 #### 接口概览
 
-获取个人信息get：/user/userInfo?userId=
+| 接口名称                            | 接口地址                                                     | 请求方式 |
+| ----------------------------------- | ------------------------------------------------------------ | -------- |
+| [获取个人信息](#1. 获取个人信息api) | /user/getUser?userId=                                        | get      |
+| 修改个人信息                        | /user/editUser                                               | put      |
+| [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                    | get      |
+| [查询节目列表](#3. 查询节目列表api) | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| [获取节目详情](#4. 获取节目详情api) | /program/getProgram?programId=                               | get      |
+| [查询票档列表](#5. 查询票档列表api) | /level?showId=                                               | get      |
+| [账户登入](#6. 账户登入api)         | /user/doLogin                                                | post     |
+| [账户注册](#7. 账户注册api)         | /user/doRegister                                             | post     |
 
-获取个人信息get：/user/userInfo/{userId}
+#### 1. 获取个人信息api
 
-修改个人信息put：/user/userInfo
+
+
+获取个人信息get：/user/getUser?userId=
+
+修改个人信息put：/user/editUser
 
 --
 
