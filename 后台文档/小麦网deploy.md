@@ -1,5 +1,7 @@
 ## 小麦后端部署文档
 
+说明：部署项目只需参考第二部分（部署war包）
+
 ###  一、运行环境
 
 System: Ubuntu16.04
@@ -16,7 +18,9 @@ Tomcat: apache tomcat 8.5.53
 
 ### 二、部署war包
 
-参考以下shell命令：
+Step1: 将项目打包并上传目录/root/damai.war
+
+Step2: 执行./deploy_damai.sh自动部署，或执行shell命令手动部署：
 
 ```shell
 #!/bin/bash
@@ -26,20 +30,20 @@ echo "waiting for service stop tomcat ... 6s count down"
 sleep 6
 
 cd /opt/tomcat/webapps
-rm -r ./xiaomai ./xiaomai.war
-mkdir ./xiaomai
-cp /root/xiaomai.war /opt/tomcat/webapps/xiaomai/
-cd /opt/tomcat/webapps/xiaomai/
-jar -xvf xiaomai.war
-rm -r ./xiaomai.war
-chown -R tomcat:tomcat ../xiaomai
+rm -r ./damai ./damai.war
+mkdir ./damai
+cp /root/damai.war /opt/tomcat/webapps/damai/
+cd /opt/tomcat/webapps/damai/
+jar -xvf damai.war
+rm -r ./damai.war
+chown -R tomcat:tomcat ../damai
 # 缓存数据
 DBUSER=`cat /etc/mysql/debian.cnf | grep user|awk '{print $3}'|head -1`
 DBPASS=`cat /etc/mysql/debian.cnf | grep password|awk '{print $3}'|head -1`
-cd /opt/tomcat/webapps/xiaomai/WEB-INF/classes
+cd /opt/tomcat/webapps/damai/WEB-INF/classes
 # 将缓存的数据替换配置文件相应内容
-sed -i "s/jdbc.username=root/jdbc.username=$DBUSER/g" config.properties
-sed -i "s/jdbc.password=root/jdbc.password=$DBPASS/g" config.properties
+sed -i "s/username: root/username: $DBUSER/g" application.yml
+sed -i "s/password: 19980203/password: $DBPASS/g" application.yml
 
 service tomcat restart
 echo "waiting for service restart tomcat ... 6s count down"
@@ -57,7 +61,7 @@ echo "done!"
 <Host name="localhost"  appBase=""
             unpackWARs="true" autoDeploy="true">
  
-	<Context path="" docBase="/opt/tomcat/webapps/xiaomai" debug="0" reloadable="true" />
+	<Context path="" docBase="/opt/tomcat/webapps/damai" debug="0" reloadable="true" />
 </Host>
 ```
 
