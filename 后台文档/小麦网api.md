@@ -134,16 +134,16 @@
 
 接口请求参数
 
-| 参数名称  | 参数位置 | 类型   | 描述       |
-| --------- | -------- | ------ | ---------- |
-| keyword   | query    | String | 检索关键字 |
-| city      | query    | Int    | 城市id     |
-| category  | query    | Int    | 类别id     |
-| startTime | query    | String | 开始时间   |
-| endTime   | query    | String | 结束时间   |
-| order     | query    | Int    | 排序规则   |
-| pageSize  | query    | Int    | 页面大小   |
-| currPage  | query    | Int    | 当前页号   |
+| 参数名称  | 参数位置 | 类型   | 描述                 |
+| --------- | -------- | ------ | -------------------- |
+| keyword   | query    | String | 检索关键字           |
+| city      | query    | Int    | 城市id               |
+| category  | query    | Int    | 类别id               |
+| startTime | query    | String | 开始时间(yyyy-MM-dd) |
+| endTime   | query    | String | 结束时间(yyyy-MM-dd) |
+| order     | query    | Int    | 排序规则             |
+| pageSize  | query    | Int    | 页面大小             |
+| currPage  | query    | Int    | 当前页号             |
 
 返回示例
 
@@ -403,7 +403,7 @@
 | password  | body     | String | 账户密码                 |
 | nickname  | body     | String | 昵称                     |
 | gender    | body     | Int    | 性别(0:男,1:女)          |
-| birthday  | body     | String | 生日                     |
+| birthday  | body     | String | 生日(yyyy-MM-dd)         |
 | identity  | body     | String | 身份证                   |
 | image_url | body     | String | 头像                     |
 | privilege | body     | Int    | 权限(0:normal, 1:system) |

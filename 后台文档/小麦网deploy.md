@@ -1,6 +1,20 @@
 ## 小麦后端部署文档
 
-### 一、部署war包
+###  一、运行环境
+
+System: Ubuntu16.04
+
+Java: openjdk version "1.8.0_252"
+
+Mysql: Ver 14.14 Distrib 5.7.30
+
+Redis server: v=3.0.6
+
+nginx: version nginx/1.10.3 (Ubuntu)
+
+Tomcat: apache tomcat 8.5.53
+
+### 二、部署war包
 
 参考以下shell命令：
 
@@ -35,7 +49,7 @@ echo "done!"
 
 
 
-### 二、修改 tomcat 默认根目录
+### 三、修改 tomcat 默认根目录
 
 编辑Tomcat配置文件/opt/tomcat/conf/server.xml，在host标签之间加入如下标签：
 
