@@ -20,7 +20,7 @@
 
 接口说明：前端访问首页和分类页面时需要获取城市列表，后端对城市列表排序处理
 
-接口地址：https://www.xiaomai.ink/city/getCityList
+接口地址：http://xiaomai.flyme.ink/city/getCityList
 
 请求方式：get
 
@@ -81,7 +81,7 @@
 
 接口说明：前端访问分类页面时需获取类别列表，后端对类别列表排序处理
 
-接口地址：https://www.xiaomai.ink/category/getCategoryList
+接口地址：http://xiaomai.flyme.ink/category/getCategoryList
 
 请求方式：get
 
@@ -128,7 +128,7 @@
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
-接口地址：https://www.xiaomai.ink/program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
+接口地址：http://xiaomai.flyme.ink/program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
 
 请求方式：get
 
@@ -214,7 +214,7 @@
 
 接口说明：查询节目详细信息，包括节目的所有场次信息
 
-接口地址：https://xiaomai/program/getProgram?programId=
+接口地址：http://xiaomai.flyme.ink/program/getProgram?programId=
 
 请求方式：get
 
@@ -282,7 +282,7 @@
 
 接口说明：
 
-接口地址：https://www.xiaomai/level?showId=
+接口地址：http://xiaomai.flyme.ink/level?showId=
 
 请求方式：get
 
@@ -346,7 +346,7 @@
 
 接口说明：前端提交登入表单，后端进行身份认证
 
-接口地址：https://www.xiaomai/user/doLogin
+接口地址：http://xiaomai.flyme.ink/user/doLogin
 
 请求方式：post
 
@@ -391,7 +391,7 @@
 
 接口说明：前端提交表单，由后端进行账户注册
 
-接口地址：https://www.xiaomai/user/doRegister
+接口地址：http://xiaomai.flyme.ink/user/doRegister
 
 请求方式：post
 
