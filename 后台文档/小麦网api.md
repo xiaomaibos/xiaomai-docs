@@ -32,7 +32,7 @@
 {
   "data": {
     "total": 3,
-    "citys": [
+    "cities": [
       {
         "id": "2",
         "name": "上海",
@@ -93,7 +93,7 @@
 {
   "data": {
     "total": 3,
-    "citys": [
+    "categories": [
       {
         "id": "3",
         "name": "话剧歌剧",
@@ -455,7 +455,60 @@
 
 #### 1. 获取个人信息api
 
-获取个人信息get：/user/getUser?userId=
+接口说明：获取个人详细信息
+
+接口地址：http://xiaomai.flyme.ink/user/getUser?userId=
+
+请求方式：get
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明   |
+| -------- | -------- | ---- | ------ |
+| userId   | query    | Int  | 用户id |
+
+返回示例1：
+
+```json
+{
+  "data": {
+    "id": 1,
+    "username": "666xmz",
+    "password": "123456xmz",
+    "nickname": "小麦子",
+    "gender": 0,
+    "birthday": "1997-05-14",
+    "identity": "360502199705140033",
+    "image_url": "https://perico.damai.cn/userheadphotos/707710/141542175.jpg?r=0.5944997079559737",
+    "privilege": 0
+  },
+  "success": true,
+  "message": "请求成功",
+  "code": 0
+}
+```
+
+返回示例2：
+
+```json
+{
+  "data": null,
+  "success": false,
+  "message": "权限不足",
+  "code": 0
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 请求成功 | true    |
+| 200  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
+
+
 
 修改个人信息put：/user/editUser
 
