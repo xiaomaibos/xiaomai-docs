@@ -630,9 +630,39 @@
 
 #### 2. 增加场次api
 
+接口说明：前段提交表单，后端限制访问权限
+
+接口地址：http://xiaomai.flyme.ink/admin/addShow
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称  | 参数位置 | 类型   | 说明                |
+| --------- | -------- | ------ | ------------------- |
+| name      | body     | String | 场次名              |
+| time      | body     | String | 时间(1621668600000) |
+| programId | body     | Int    | 场次从属的节目      |
+
 #### 3. 增加票档api
 
+接口说明：前段提交表单，后端限制访问权限
 
+接口地址：http://xiaomai.flyme.ink/admin/addLevel
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称   | 参数位置 | 类型   | 说明                |
+| ---------- | -------- | ------ | ------------------- |
+| name       | body     | String | 场次名              |
+| price      | body     | String | 时间(1621668600000) |
+| totalCount |          |        |                     |
+| leftCount  |          |        |                     |
+| limitCount |          |        |                     |
+| seat       |          |        |                     |
+| showId     |          |        |                     |
 
 
 
