@@ -280,11 +280,11 @@
 | 301  | 非法参数 | false   |
 | 999  | 系统异常 | false   |
 
-#### 5. 查询票档列表api
+#### 5. 获取票档详情api
 
 接口说明：
 
-接口地址：http://xiaomai.flyme.ink/level?showId=
+接口地址：http://xiaomai.flyme.ink/show/getShow?showId=
 
 请求方式：get
 
@@ -298,51 +298,52 @@
 
 ```json
 {
-  "data": {
-    "total": 3,
     "levels": [
-      {
-        "id": "111",
-        "name": "c档(160.0)",
-        "price": 160.0,
-        "total_count": 20,
-        "left_count": 17,
-        "limit_count": 6,
-        "seat": "10011000000000000000"
-      },
-      {
-        "id": "112",
-        "name": "b档(210.0)",
-        "price": 210.0,
-        "total_count": 20,
-        "left_count": 17,
-        "limit_count": 6,
-        "seat": "10011000000000000000"
-      },
-      {
-        "id": "115",
-        "name": "a档(280.0)",
-        "price": 280.0,
-        "total_count": 20,
-        "left_count": 17,
-        "limit_count": 6,
-        "seat": "10010000100000000000"
-      }
-    ]
-  },
-  "success": true,
-  "message": "请求成功",
-  "code": 0
+        {
+            "leftCount": 80,
+            "levelId": 282,
+            "limitCount": 2,
+            "name": "二层看台全价368元",
+            "price": "368",
+            "showId": 67,
+            "totalCount": 80
+        },
+        {
+            "leftCount": 80,
+            "levelId": 283,
+            "limitCount": 2,
+            "name": "四层预售票198元（原价268元）",
+            "price": "198",
+            "showId": 67,
+            "totalCount": 80
+        },
+        {
+            "leftCount": 80,
+            "levelId": 284,
+            "limitCount": 2,
+            "name": "四层看台全价268元",
+            "price": "268",
+            "showId": 67,
+            "totalCount": 80
+        },
+        {
+            "leftCount": 80,
+            "levelId": 281,
+            "limitCount": 2,
+            "name": "二层预售票298元（原价368元）",
+            "price": "298",
+            "showId": 67,
+            "totalCount": 80
+        }
+    ],
+    "name": "2021-05-22 周六 15:30",
+    "programId": 34,
+    "showId": 67,
+    "time": 1621668600000
 }
 ```
 
-返回码：
 
-| code | messge   | success |
-| ---- | -------- | ------- |
-| 0    | 请求成功 | true    |
-| 301  | 非法参数 | false   |
-| 999  | 系统异常 | false   |
 
 #### 6. 账户登入api
 
