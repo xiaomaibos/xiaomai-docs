@@ -597,11 +597,12 @@
 
 #### 接口概览
 
-| 接口名称 | 接口地址          | 请求方式 |
-| -------- | ----------------- | -------- |
-| 增加节目 | /admin/addProgram | post     |
-| 增加场次 | /admin/addShow    | post     |
-| 增加票档 | /admin/addLevel   | post     |
+| 接口名称 | 接口地址                | 请求方式 |
+| -------- | ----------------------- | -------- |
+| 增加节目 | /admin/addProgram       | post     |
+| 增加场次 | /admin/addShow          | post     |
+| 增加票档 | /admin/addLevel         | post     |
+| 爬取节目 | /admin/damaiCrawl?code= | get      |
 
 #### 1. 增加节目api
 
@@ -750,6 +751,52 @@
 | ---- | -------- | ------- |
 | 0    | 提交成功 | true    |
 | 231  | 标题为空 | false   |
+| 300  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
+
+
+
+#### 4. 爬取节目api
+
+接口说明：前段输入大麦网节目编号，后端完成节目爬取
+
+接口地址：http://xiaomai.flyme.ink/admin/damaiCrawl?code=
+
+请求方式：get
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型   | 说明           |
+| -------- | -------- | ------ | -------------- |
+| code     | query    | String | 大麦网节目编号 |
+
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "爬取成功",
+  "code": 0
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "权限不足",
+  "code": 300
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 爬取成功 | true    |
+| 250  | 爬取失败 | false   |
 | 300  | 权限不足 | false   |
 | 301  | 非法参数 | false   |
 | 999  | 系统异常 | false   |
