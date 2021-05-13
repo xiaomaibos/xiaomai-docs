@@ -30,8 +30,6 @@ echo "waiting for service stop tomcat ... 6s count down"
 sleep 6
 
 cd /opt/tomcat/webapps
-rm -r ./damai ./damai.war
-mkdir ./damai
 cp /root/damai.war /opt/tomcat/webapps/damai/
 cd /opt/tomcat/webapps/damai/
 jar -xvf damai.war

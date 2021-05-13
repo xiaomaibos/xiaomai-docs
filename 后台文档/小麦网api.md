@@ -6,15 +6,15 @@
 
 #### 接口概览
 
-| 接口名称                            | 接口地址                                                     | 请求方式 |
-| ----------------------------------- | ------------------------------------------------------------ | -------- |
-| [查询城市列表](#1. 查询城市列表api) | /city/getCityList                                            | get      |
-| [查询类别列表](#2. 查询类别列表api) | /category/getCategoryList                                    | get      |
-| [查询节目列表](#3. 查询节目列表api) | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
-| [获取节目详情](#4. 获取节目详情api) | /program/getProgram?programId=                               | get      |
-| [查询票档列表](#5. 查询票档列表api) | /level/getShowLevel?showId=                                  | get      |
-| [账户登入](#6. 账户登入api)         | /user/doLogin                                               | post     |
-| [账户注册](#7. 账户注册api)         | /user/doRegister                                            | post     |
+| 接口名称     | 接口地址                                                     | 请求方式 |
+| ------------ | ------------------------------------------------------------ | -------- |
+| 查询城市列表 | /city/getCityList                                            | get      |
+| 查询类别列表 | /category/getCategoryList                                    | get      |
+| 查询节目列表 | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
+| 获取节目详情 | /program/getProgram?programId=                               | get      |
+| 查询票档列表 | /level/getShowLevel?showId=                                  | get      |
+| 账户登入     | /user/doLogin                                                | post     |
+| 账户注册     | /user/doRegister                                             | post     |
 
 #### 1. 查询城市列表api
 
@@ -594,4 +594,45 @@
 ### 三、管理员功能模块
 
 ---
+
+#### 接口概览
+
+| 接口名称 | 接口地址          | 请求方式 |
+| -------- | ----------------- | -------- |
+| 增加节目 | /admin/addProgram | post     |
+| 增加场次 | /admin/addShow    | post     |
+| 增加票档 | /admin/addLevel   | post     |
+
+#### 1. 增加节目api
+
+接口说明：前段提交表单，后端限制访问权限
+
+接口地址：http://xiaomai.flyme.ink/admin/addProgram
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称   | 参数位置 | 类型   | 说明           |
+| ---------- | -------- | ------ | -------------- |
+| title      | body     | String | 标题           |
+| lowPrice   | body     | String | 最低价         |
+| highPrice  | body     | String | 最高价         |
+| startTime  | body     | String | 最早时间       |
+| endTime    | body     | String | 最晚时间       |
+| address    | body     | String | 地址           |
+| explain    | body     | String | 说明           |
+| detail     | body     | String | 详情           |
+| notice     | body     | String | 须知           |
+| imageUrl   | body     | String | 节目图片       |
+| cityId     | body     | Int    | 节目从属的城市 |
+| categoryId | body     | Int    | 节目从属的类别 |
+
+#### 2. 增加场次api
+
+#### 3. 增加票档api
+
+
+
+
 
