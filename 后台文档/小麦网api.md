@@ -12,7 +12,7 @@
 | 查询类别列表 | /category/getCategoryList                                    | get      |
 | 查询节目列表 | /program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage= | get      |
 | 获取节目详情 | /program/getProgram?programId=                               | get      |
-| 查询票档列表 | /level/getShowLevel?showId=                                  | get      |
+| 获取场次详情 | /show/getShow?showId=                                        | get      |
 | 账户登入     | /user/doLogin                                                | post     |
 | 账户注册     | /user/doRegister                                             | post     |
 
@@ -280,7 +280,7 @@
 | 301  | 非法参数 | false   |
 | 999  | 系统异常 | false   |
 
-#### 5. 获取票档详情api
+#### 5. 获取场次详情api
 
 接口说明：
 
