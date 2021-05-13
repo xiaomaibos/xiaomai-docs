@@ -26,56 +26,35 @@
 
 接口请求参数：无
 
-返回示例1：
+返回示例：
 
 ```json
-{
-  "data": {
-    "total": 3,
-    "cities": [
-      {
-        "id": "2",
+[
+    {
+        "cityId": 1,
         "name": "上海",
-        "code": "200000",
-        "count": 23
-      },
-      {
-        "id": "1",
+        "code": null,
+        "count": 782,
+        "programs": null
+    },
+    {
+        "cityId": 2,
         "name": "北京",
-        "code": "100000",
-        "count": 12
-      },
-      {
-        "id": "3",
-        "name": "深圳",
-        "code": "518000",
-        "count": 2
-      }
-    ]
-  },
-  "success": true,
-  "message": "请求成功",
-  "code": 0
-}
+        "code": null,
+        "count": 715,
+        "programs": null
+    },
+    {
+        "cityId": 3,
+        "name": "杭州",
+        "code": null,
+        "count": 251,
+        "programs": null
+    }
+]
 ```
 
-返回示例2：
 
-```json
-{
-  "data": null,
-  "success": false,
-  "message": "系统异常",
-  "code": 999
-}
-```
-
-返回码：
-
-| code | messge   | success |
-| ---- | -------- | ------- |
-| 0    | 请求成功 | true    |
-| 999  | 系统异常 | false   |
 
 #### 2. 查询类别列表api
 
@@ -90,39 +69,29 @@
 返回示例：
 
 ```json
-{
-  "data": {
-    "total": 3,
-    "categories": [
-      {
-        "id": "3",
-        "name": "话剧歌剧",
-        "count": 120
-      },
-      {
-        "id": "1",
+[
+    {
+        "cid": 1,
         "name": "音乐会",
-        "count": 52
-      },
-      {
-        "id": "2",
-        "name": "曲苑杂谈",
-        "count": 33
-      }
-    ]
-  },
-  "success": true,
-  "message": "请求成功",
-  "code": 0
-}
+        "count": 1170,
+        "programs": null
+    },
+    {
+        "cid": 2,
+        "name": "话剧歌剧",
+        "count": 1058,
+        "programs": null
+    },
+    {
+        "cid": 3,
+        "name": "儿童亲子",
+        "count": 971,
+        "programs": null
+    }
+]
 ```
 
-返回码：
 
-| code | messge   | success |
-| ---- | -------- | ------- |
-| 0    | 请求成功 | true    |
-| 999  | 系统异常 | false   |
 
 #### 3. 查询节目列表api
 
@@ -149,66 +118,93 @@
 
 ```json
 {
-  "data": {
     "total": 2,
-    "programs": [
-      {
-        "id": 10,
-        "title": "【上海】四月是你的谎言",
-        "low_price": "160",
-        "high_price": "280",
-        "start_time": "2021-07-04",
-        "end_time": "2021-07-05",
-        "address": "上海大剧院",
-        "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
-        "city": {
-          "id": 2,
-          "name": "上海",
-          "code": "200000",
-          "count": 23
+    "list": [
+        {
+            "pid": 26,
+            "title": "【苏州】《久石让 · 宫崎骏》音乐会",
+            "highPrice": "80",
+            "lowPrice": "60",
+            "startTime": "2021-05-11T05:35:00.000+00:00",
+            "endTime": "2021-05-13T05:35:00.000+00:00",
+            "showStartTime": "2021-05-11 13:35:00",
+            "showEndTime": "2021-05-13 13:35:00",
+            "address": "苏州市歌舞剧院小剧场",
+            "explain": "不支持退票...",
+            "detail": "演出介绍...",
+            "notice": "需要提前入场...",
+            "image": "damFile/program/641313072155.jpg",
+            "cityId": 7,
+            "city": {
+                "cityId": 7,
+                "name": "苏州",
+                "code": null,
+                "count": 182,
+                "programs": null
+            },
+            "categoryId": 8,
+            "category": {
+                "cid": 8,
+                "name": "体育",
+                "count": 28,
+                "programs": null
+            },
+            "shows": null
         },
-        "category": {
-          "id": 1,
-          "name": "音乐会",
-          "count": 52
+        {
+            "pid": 27,
+            "title": "【苏州】菊次郎的夏天—久石让轻音乐之旅钢琴音乐会",
+            "highPrice": "360",
+            "lowPrice": "88",
+            "startTime": "2021-05-12T08:13:00.000+00:00",
+            "endTime": "2021-05-14T08:13:00.000+00:00",
+            "showStartTime": "2021-05-12 16:13:00",
+            "showEndTime": "2021-05-14 16:13:00",
+            "address": "苏州昆剧院",
+            "explain": "不支持退票...",
+            "detail": "演出介绍...",
+            "notice": "需要提前入场...",
+            "image": "damFile/program/642571390891.jpg",
+            "cityId": 7,
+            "city": {
+                "cityId": 7,
+                "name": "苏州",
+                "code": null,
+                "count": 182,
+                "programs": null
+            },
+            "categoryId": 8,
+            "category": {
+                "cid": 8,
+                "name": "体育",
+                "count": 28,
+                "programs": null
+            },
+            "shows": null
         }
-      },
-      {
-        "id": 12,
-        "title": "【深圳】四月是你的谎言",
-        "low_price": "120",
-        "high_price": "340",
-        "start_time": "2021-05-14",
-        "end_time": "2021-05-24",
-        "address": "深圳音乐厅",
-        "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
-        "city": {
-          "id": 3,
-          "name": "深圳",
-          "code": "518000",
-          "count": 2
-        },
-        "category": {
-          "id": 1,
-          "name": "音乐会",
-          "count": 52
-        }
-      }
-    ]
-  }
-  "success": true,
-  "message": "请求成功",
-  "code": 0
+    ],
+    "pageNum": 1,
+    "pageSize": 10,
+    "size": 4,
+    "startRow": 1,
+    "endRow": 4,
+    "pages": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+        1
+    ],
+    "navigateFirstPage": 1,
+    "navigateLastPage": 1
 }
 ```
 
-返回码：
 
-| code | messge   | success |
-| ---- | -------- | ------- |
-| 0    | 请求成功 | true    |
-| 301  | 非法参数 | false   |
-| 999  | 系统异常 | false   |
 
 #### 4. 获取节目详情api
 
@@ -228,45 +224,51 @@
 
 ```json
 {
-  "data": {
-    "id": 10,
-    "title": "【上海】四月是你的谎言",
-    "low_price": "160",
-    "high_price": "280",
-    "start_time": "2021-07-04",
-    "end_time": "2021-07-05",
-    "address": "上海大剧院",
-    "explain": "不支持退票...",
-    "detail": "演出介绍...",
-    "notice": "需要提前入场...",
-    "image_url": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01vIK7Is2GdSGxF0CmU_!!0-item_pic.jpg_q60.jpg_.webp",
-    "city": {
-      "id": 2,
-      "name": "上海",
-      "code": "200000",
-      "count": 23
-    },
+    "address": "济南奥体中心体育馆",
     "category": {
-      "id": 1,
-      "name": "音乐会",
-      "count": 52
+        "cid": 7,
+        "count": 64,
+        "name": "舞蹈芭蕾"
     },
+    "categoryId": 7,
+    "city": {
+        "cityId": 23,
+        "count": 53,
+        "name": "济南"
+    },
+    "cityId": 23,
+    "detail": "演出介绍...",
+    "endTime": 1620556800000,
+    "explain": "不支持退票...",
+    "highPrice": "580",
+    "image": "damFile/program/644431227376.jpg",
+    "lowPrice": "198",
+    "notice": "需要提前入场...",
+    "pid": 1,
+    "showEndTime": "2021-05-09 18:40:00",
+    "showStartTime": "2021-05-07 18:40:00",
     "shows": [
-      {
-        "id": 1,
-        "name": "2021-07-04 14:00",
-        "time": 1619889458483
-      },
-      {
-        "id": 2,
-        "name": "2021-07-05 14:00",
-        "time": 1627089458483
-      }
-    ]
-  },
-  "success": true,
-  "message": "请求成功",
-  "code": 0
+        {
+            "name": "两日通票2021年5月22日-23日15:30",
+            "programId": 1,
+            "showId": 2,
+            "time": 1621668600000
+        },
+        {
+            "name": "2021-05-22 周六 15:30",
+            "programId": 1,
+            "showId": 1,
+            "time": 1621668600000
+        },
+        {
+            "name": "2021-05-23 周日 15:30",
+            "programId": 1,
+            "showId": 3,
+            "time": 1621755000000
+        }
+    ],
+    "startTime": 1620384000000,
+    "title": "【济南】Sony music “贴地飞行”室内音乐节—济南站（看台票）"
 }
 ```
 
