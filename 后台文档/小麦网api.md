@@ -628,6 +628,36 @@
 | cityId     | body     | Int    | 节目从属的城市 |
 | categoryId | body     | Int    | 节目从属的类别 |
 
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "提交成功",
+  "code": 0
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "权限不足",
+  "code": 300
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 提交成功 | true    |
+| 231  | 标题为空 | false   |
+| 300  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
+
 #### 2. 增加场次api
 
 接口说明：前段提交表单，后端限制访问权限
@@ -643,6 +673,36 @@
 | name      | body     | String | 场次名              |
 | time      | body     | String | 时间(1621668600000) |
 | programId | body     | Int    | 场次从属的节目      |
+
+返回示例1：
+
+```json
+{
+  "success": true,
+  "message": "提交成功",
+  "code": 0
+}
+```
+
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "权限不足",
+  "code": 300
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 提交成功 | true    |
+| 231  | 标题为空 | false   |
+| 300  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
 
 #### 3. 增加票档api
 
@@ -664,5 +724,32 @@
 | seat       | body     | String | 选座情况       |
 | showId     | body     | Int    | 票档从属的场次 |
 
+返回示例1：
 
+```json
+{
+  "success": true,
+  "message": "提交成功",
+  "code": 0
+}
+```
 
+返回示例2：
+
+```json
+{
+  "success": false,
+  "message": "权限不足",
+  "code": 300
+}
+```
+
+返回码：
+
+| code | messge   | success |
+| ---- | -------- | ------- |
+| 0    | 提交成功 | true    |
+| 231  | 标题为空 | false   |
+| 300  | 权限不足 | false   |
+| 301  | 非法参数 | false   |
+| 999  | 系统异常 | false   |
