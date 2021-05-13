@@ -616,8 +616,8 @@
 | 参数名称   | 参数位置 | 类型   | 说明           |
 | ---------- | -------- | ------ | -------------- |
 | title      | body     | String | 标题           |
-| lowPrice   | body     | String | 最低价         |
-| highPrice  | body     | String | 最高价         |
+| lowPrice   | body     | Int    | 最低价         |
+| highPrice  | body     | Int    | 最高价         |
 | startTime  | body     | String | 最早时间       |
 | endTime    | body     | String | 最晚时间       |
 | address    | body     | String | 地址           |
@@ -654,15 +654,15 @@
 
 接口请求参数
 
-| 参数名称   | 参数位置 | 类型   | 说明                |
-| ---------- | -------- | ------ | ------------------- |
-| name       | body     | String | 场次名              |
-| price      | body     | String | 时间(1621668600000) |
-| totalCount |          |        |                     |
-| leftCount  |          |        |                     |
-| limitCount |          |        |                     |
-| seat       |          |        |                     |
-| showId     |          |        |                     |
+| 参数名称   | 参数位置 | 类型   | 说明           |
+| ---------- | -------- | ------ | -------------- |
+| name       | body     | String | 票档名         |
+| price      | body     | Int    | 价格           |
+| totalCount | body     | Int    | 该票档的总票数 |
+| leftCount  | body     | Int    | 该票档的票剩余 |
+| limitCount | body     | Int    | 购票限制       |
+| seat       | body     | String | 选座情况       |
+| showId     | body     | Int    | 票档从属的场次 |
 
 
 
