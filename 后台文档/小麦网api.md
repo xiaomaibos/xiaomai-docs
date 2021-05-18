@@ -823,13 +823,34 @@
 
 
 
-#### 8. 提交订单api
+#### 8. 确认订单api
 
 接口说明：选取票档数量，后端返回门票信息
 
-接口地址：http://xiaomai.flyme.ink/user/confirmTicket
+接口地址：http://xiaomai.flyme.ink/user/confirmOrder
 
 请求方式：post
+
+接口请求参数
+
+| 参数名称  | 参数位置 | 类型   | 说明        |
+| --------- | -------- | ------ | ----------- |
+| userId    | body     | Int    | 用户Id      |
+| linkman   | body     | String | 联系人      |
+| linknum   | body     | String | 联系电话    |
+| attenders | body     | String | 观影人: 2,3 |
+| levelId   | body     | Int    | 票档Id      |
+| count     | body     | Int    | 数量        |
+
+返回示例1：
+
+
+
+
+
+
+
+
 
 接口请求参数
 
