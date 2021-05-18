@@ -754,16 +754,84 @@
 返回示例1：
 
 ```json
-
+{
+  "code": 0,
+  "data": {
+    "leftCount": 80,
+    "levelId": 1,
+    "limitCount": 6,
+    "name": "套票69.9元（艺术馆+解压馆）",
+    "price": "69",
+    "show": {
+      "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
+      "program": {
+        "address": "湖滨银泰in77(D区负二楼)",
+        "categoryId": 3,
+        "cityId": 3,
+        "detail": "演出介绍...",
+        "endTime": 1621046100000,
+        "explain": "不支持退票...",
+        "highPrice": "69",
+        "image": "damFile/program/637879137617.jpg",
+        "lowPrice": "29",
+        "notice": "需要提前入场...",
+        "pid": 1,
+        "startTime": 1620873300000,
+        "title": "【杭州】星空恋爱解压馆（湖滨银泰in77旗舰店）"
+      },
+      "programId": 1,
+      "showId": 1,
+      "time": 1612836000000
+    },
+    "showId": 1,
+    "tickets": [
+      {
+        "levelId": 1,
+        "price": "69",
+        "ticketId": 24,
+        "valid": 0
+      },
+      {
+        "levelId": 1,
+        "price": "69",
+        "ticketId": 22,
+        "valid": 0
+      },
+      {
+        "levelId": 1,
+        "price": "69",
+        "ticketId": 23,
+        "valid": 0
+      }
+    ],
+    "totalCount": 80
+  },
+  "message": "提交成功",
+  "success": true
+}
 ```
 
 返回示例2：
 
 ```json
-
+{
+  "code": 200,
+  "message": "操作失败",
+  "success": false
+}
 ```
 
 
+
+#### 8. 提交订单api
+
+接口说明：选取票档数量，后端返回门票信息
+
+接口地址：http://xiaomai.flyme.ink/user/confirmTicket
+
+请求方式：post
+
+接口请求参数
 
 查询订单列表
 
