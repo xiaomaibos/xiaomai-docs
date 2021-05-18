@@ -445,14 +445,19 @@
 
 #### 接口概览
 
-| 接口名称     | 接口地址              | 请求方式 |
-| ------------ | --------------------- | -------- |
-| 获取个人信息 | /user/getUser?userId= | get      |
-| 修改个人信息 | /user/editUser        | put      |
+| 接口名称     | 接口地址                         | 请求方式 |
+| ------------ | -------------------------------- | -------- |
+| 获取个人信息 | /user/getUser?userId=            | get      |
+| 修改个人信息 | /user/editUser                   | put      |
+| 增加收货地址 | /user/addAddress                 | post     |
+| 删除收货地址 | /user/deleteAddress?addressId=   | delete   |
+| 增加观影人   | /user/addAttender                | post     |
+| 删除观影人   | /user/deleteAttender?attenderId= | delete   |
+| 提交门票     | /user/                           |          |
 
-#### 1. 获取个人信息api
+#### 1. 获取用户详情api
 
-接口说明：获取个人详细信息，由后端限制访问权限
+接口说明：获取个人详细信息，包括地址列表，联系人列表
 
 接口地址：http://xiaomai.flyme.ink/user/getUser?userId=
 
@@ -469,15 +474,32 @@
 ```json
 {
   "data": {
-    "id": 1,
-    "username": "666xmz",
-    "password": "123456xmz",
-    "nickname": "小麦子",
-    "gender": 0,
-    "birthday": "1997-05-14",
-    "identity": "360502199705140033",
-    "image_url": "https://perico.damai.cn/userheadphotos/707710/141542175.jpg?r=0.5944997079559737",
-    "privilege": 0
+    "addresses": [
+      {
+        "addressId": 1,
+        "detail": "江西省",
+        "name": "钟小浩",
+        "phone": "15079084000",
+        "userId": 10
+      }
+    ],
+    "attenders": [
+      {
+        "id": 1,
+        "identityNum": "360502200210010033",
+        "identityType": "身份证",
+        "name": "虚伪鱼",
+        "userId": 10
+      }
+    ],
+    "birthday": 1621224586000,
+    "gender": 1,
+    "identity": "360502200010050033",
+    "nickname": "测试账户",
+    "password": "111",
+    "privilege": 0,
+    "uid": 10,
+    "username": "test2"
   },
   "success": true,
   "message": "请求成功",
@@ -556,29 +578,192 @@
 | 301  | 非法参数 | false   |
 | 999  | 系统异常 | false   |
 
---
 
-查询收货地址列表get：/user/address?userId=&addressId=
 
-获取收货地址get：/user/address/{addressId}
+#### 3. 增加收货地址api
 
-删除收货地址delete：/user/address/{addressId}
+接口地址：http://xiaomai.flyme.ink/user/addAddress
 
-增加收货地址post：/user/address
+请求方式：post
 
-修改收货地址put：/user/address
+接口请求参数
 
---
+| 参数名称 | 参数位置 | 类型   | 说明           |
+| -------- | -------- | ------ | -------------- |
+| name     | body     | String | 收件人         |
+| phone    | body     | String | 电话           |
+| detail   | body     | String | 地址详细       |
+| userId   | body     | Int    | 地址从属的用户 |
 
-查询观影人列表get：/user/attender?userId=&attenderId=
+返回示例1：
 
-获取观影人get：/user/attender/{attenderId}
+```json
+{
+  "code": 0,
+  "data": {
+    "addressId": 4,
+    "detail": "上海普陀",
+    "name": "钟小浩2",
+    "phone": "1579083386",
+    "userId": 10
+  },
+  "message": "提交成功",
+  "success": true
+}
+```
 
-删除观影人delete：/user/attender/{attenderId}
+返回示例2：
 
-增加观影人post：/user/attender
+```json
+{
+  "code": 200,
+  "message": "操作失败",
+  "success": false
+}
+```
 
-修改观影人put：/user/attender
+
+
+#### 4. 删除收货地址api
+
+接口地址：http://xiaomai.flyme.ink/user/deleteAddress?addressId=
+
+请求方式：delete
+
+接口请求参数
+
+| 参数名称  | 参数位置 | 类型 | 说明   |
+| --------- | -------- | ---- | ------ |
+| addressId | query    | Int  | 地址Id |
+
+返回示例1：
+
+```json
+{
+  "code": 0,
+  "message": "删除成功",
+  "success": true
+}
+```
+
+返回示例2：
+
+```json
+{
+  "code": 200,
+  "message": "操作失败",
+  "success": false
+}
+```
+
+
+
+#### 5. 增加观影人api
+
+接口地址：http://xiaomai.flyme.ink/user/addAttender
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称     | 参数位置 | 类型   | 说明           |
+| ------------ | -------- | ------ | -------------- |
+| name         | body     | String | 观影人         |
+| identityType | body     | String | 证件类型       |
+| identityNum  | body     | String | 证件号码       |
+| userId       | body     | Int    | 证件从属的用户 |
+
+返回示例1：
+
+```json
+{
+  "code": 0,
+  "data": {
+    "id": 2,
+    "identityNum": "360502199810030022",
+    "identityType": "身份证",
+    "name": "观影人1",
+    "userId": 10
+  },
+  "message": "提交成功",
+  "success": true
+}
+```
+
+返回示例2：
+
+```json
+{
+  "code": 200,
+  "message": "操作失败",
+  "success": false
+}
+```
+
+
+
+#### 6. 删除观影人api
+
+接口地址：http://xiaomai.flyme.ink/user/deleteAttender?attenderId=
+
+请求方式：delete
+
+接口请求参数
+
+| 参数名称   | 参数位置 | 类型 | 说明     |
+| ---------- | -------- | ---- | -------- |
+| attenderId | query    | Int  | 观影人Id |
+
+返回示例1：
+
+```json
+{
+  "code": 0,
+  "message": "删除成功",
+  "success": true
+}
+```
+
+返回示例2：
+
+```json
+{
+  "code": 200,
+  "message": "操作失败",
+  "success": false
+}
+```
+
+
+
+#### 7. 确认门票api
+
+接口说明：选取票档数量，后端返回门票信息
+
+接口地址：http://xiaomai.flyme.ink/user/confirmTicket
+
+请求方式：post
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明   |
+| -------- | -------- | ---- | ------ |
+| levelId  | body     | Int  | 票档Id |
+| count    | body     | Int  | 数量   |
+
+返回示例1：
+
+```json
+
+```
+
+返回示例2：
+
+```json
+
+```
+
+
 
 查询订单列表
 
