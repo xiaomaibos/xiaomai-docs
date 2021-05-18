@@ -825,8 +825,6 @@
 
 #### 8. 确认订单api
 
-接口说明：选取票档数量，后端返回门票信息
-
 接口地址：http://xiaomai.flyme.ink/user/confirmOrder
 
 请求方式：post
@@ -838,17 +836,129 @@
 | userId    | body     | Int    | 用户Id      |
 | linkman   | body     | String | 联系人      |
 | linknum   | body     | String | 联系电话    |
-| attenders | body     | String | 观影人: 2,3 |
+| attenders | body     | String | 观影人: 1,2 |
 | levelId   | body     | Int    | 票档Id      |
 | count     | body     | Int    | 数量        |
 
-返回示例1：
+返回示例：
+
+```json
+{
+  "code": 0,
+  "data": {
+    "attender": "[{\"id\":1,\"identityNum\":\"360502200210010033\",\"identityType\":\"身份证\",\"name\":\"虚伪鱼\",\"userId\":10},{\"id\":2,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"name\":\"观影人1\",\"userId\":10}]",
+    "code": "PsM7SvMF7hJrDIENoJ",
+    "createTime": 1621337234823,
+    "linkNum": "15079086666",
+    "linkman": "zhong",
+    "orderId": 2,
+    "showId": 1,
+    "status": 0,
+    "statusInfo": "待付款",
+    "totalCount": 2,
+    "totalPrice": "138",
+    "userId": 10
+  },
+  "message": "提交成功",
+  "success": true
+}
+```
 
 
 
+#### 8. 查询订单列表api
 
+接口地址：http://xiaomai.flyme.ink/user/getOrderList?userId=
 
+请求方式：get
 
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明   |
+| -------- | -------- | ---- | ------ |
+| userId   | query    | Int  | 用户Id |
+
+返回示例：
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "attender": "",
+      "code": "DYB8NALwjs",
+      "createTime": 1621336407000,
+      "linkNum": "15079086666",
+      "linkman": "zhong",
+      "orderId": 1,
+      "show": {
+        "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
+        "program": {
+          "address": "湖滨银泰in77(D区负二楼)",
+          "categoryId": 3,
+          "cityId": 3,
+          "detail": "演出介绍...",
+          "endTime": 1621046100000,
+          "explain": "不支持退票...",
+          "highPrice": "69",
+          "image": "damFile/program/637879137617.jpg",
+          "lowPrice": "29",
+          "notice": "需要提前入场...",
+          "pid": 1,
+          "startTime": 1620873300000,
+          "title": "【杭州】星空恋爱解压馆（湖滨银泰in77旗舰店）"
+        },
+        "programId": 1,
+        "showId": 1,
+        "time": 1612836000000
+      },
+      "showId": 1,
+      "status": 0,
+      "statusInfo": "待付款",
+      "totalCount": 2,
+      "totalPrice": "138",
+      "userId": 10
+    },
+    {
+      "attender": "[{\"id\":1,\"identityNum\":\"360502200210010033\",\"identityType\":\"身份证\",\"name\":\"虚伪鱼\",\"userId\":10},{\"id\":2,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"name\":\"观影人1\",\"userId\":10}]",
+      "code": "PsM7SvMF7hJrDIENoJ",
+      "createTime": 1621337235000,
+      "linkNum": "15079086666",
+      "linkman": "zhong",
+      "orderId": 2,
+      "show": {
+        "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
+        "program": {
+          "address": "湖滨银泰in77(D区负二楼)",
+          "categoryId": 3,
+          "cityId": 3,
+          "detail": "演出介绍...",
+          "endTime": 1621046100000,
+          "explain": "不支持退票...",
+          "highPrice": "69",
+          "image": "damFile/program/637879137617.jpg",
+          "lowPrice": "29",
+          "notice": "需要提前入场...",
+          "pid": 1,
+          "startTime": 1620873300000,
+          "title": "【杭州】星空恋爱解压馆（湖滨银泰in77旗舰店）"
+        },
+        "programId": 1,
+        "showId": 1,
+        "time": 1612836000000
+      },
+      "showId": 1,
+      "status": 0,
+      "statusInfo": "待付款",
+      "totalCount": 2,
+      "totalPrice": "138",
+      "userId": 10
+    }
+  ],
+  "message": "提交成功",
+  "success": true
+}
+```
 
 
 
