@@ -110,6 +110,7 @@
 | total_price | Int    | 总额                                   |
 | linkman     | String | 联系人                                 |
 | linknum     | String | 联系电话                               |
+| address     | String | 收货地址                               |
 | attender    | String | 观影人                                 |
 | user_id     | Int    | 订单从属的用户                         |
 | show_id     | Int    | 订单从属的场次                         |
@@ -132,13 +133,14 @@
 
 * address：收货地址表
 
-| 字段名称 | 类型   | 说明               |
-| -------- | ------ | ------------------ |
-| id       | Int    | 统编id             |
-| name     | String | 收件人             |
-| phone    | String | 手机号             |
-| detail   | String | 配送地址           |
-| user_id  | Int    | 收货地址从属的用户 |
+| 字段名称  | 类型   | 说明               |
+| --------- | ------ | ------------------ |
+| id        | Int    | 统编id             |
+| name      | String | 收件人             |
+| phone     | String | 手机号             |
+| detail    | String | 配送地址           |
+| is_delete | Int    | 0:存在, 1:已删除   |
+| user_id   | Int    | 收货地址从属的用户 |
 
 * attender：观影人信息
 
@@ -148,6 +150,7 @@
 | name          | String | 真实姓名         |
 | identity_type | String | 证件类型         |
 | identity_num  | String | 证件号码         |
+| is_delete     | Int    | 0:存在, 1:已删除 |
 | user_id       | Int    | 观影人从属的用户 |
 
 * city：城市信息表

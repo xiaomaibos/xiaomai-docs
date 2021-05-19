@@ -20,7 +20,7 @@
 
 接口说明：前端访问首页和分类页面时需要获取城市列表，后端对城市列表排序处理
 
-接口地址：http://xiaomai.flyme.ink/city/getCityList
+接口地址：http://xiaomai.flyme.ink/api/city/getCityList
 
 请求方式：get
 
@@ -60,7 +60,7 @@
 
 接口说明：前端访问分类页面时需获取类别列表，后端对类别列表排序处理
 
-接口地址：http://xiaomai.flyme.ink/category/getCategoryList
+接口地址：http://xiaomai.flyme.ink/api/category/getCategoryList
 
 请求方式：get
 
@@ -97,7 +97,7 @@
 
 接口说明：在首页页面按照类别和城市查询，在分类页面按照所选条件查询
 
-接口地址：http://xiaomai.flyme.ink/program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
+接口地址：http://xiaomai.flyme.ink/api/program/findProgramWithFilters?keyword=&city=&category=&startTime=&endTime=&order=&pageSize=&currPage=
 
 请求方式：get
 
@@ -210,7 +210,7 @@
 
 接口说明：查询节目详细信息，包括节目的所有场次信息
 
-接口地址：http://xiaomai.flyme.ink/program/getProgram?programId=
+接口地址：http://xiaomai.flyme.ink/api/program/getProgram?programId=
 
 请求方式：get
 
@@ -284,7 +284,7 @@
 
 接口说明：
 
-接口地址：http://xiaomai.flyme.ink/show/getShow?showId=
+接口地址：http://xiaomai.flyme.ink/api/show/getShow?showId=
 
 请求方式：get
 
@@ -349,7 +349,7 @@
 
 接口说明：前端提交登入表单，后端进行身份认证
 
-接口地址：http://xiaomai.flyme.ink/user/doLogin
+接口地址：http://xiaomai.flyme.ink/api/user/doLogin
 
 请求方式：post
 
@@ -394,7 +394,7 @@
 
 接口说明：前端提交表单，由后端进行账户注册
 
-接口地址：http://xiaomai.flyme.ink/user/doRegister
+接口地址：http://xiaomai.flyme.ink/api/user/doRegister
 
 请求方式：post
 
@@ -445,21 +445,23 @@
 
 #### 接口概览
 
-| 接口名称     | 接口地址                         | 请求方式 |
-| ------------ | -------------------------------- | -------- |
-| 获取个人信息 | /user/getUser?userId=            | get      |
-| 修改个人信息 | /user/editUser                   | put      |
-| 增加收货地址 | /user/addAddress                 | post     |
-| 删除收货地址 | /user/deleteAddress?addressId=   | delete   |
-| 增加观影人   | /user/addAttender                | post     |
-| 删除观影人   | /user/deleteAttender?attenderId= | delete   |
-| 提交门票     | /user/                           |          |
+| 接口名称     | 接口地址                   | 请求方式 |
+| ------------ | -------------------------- | -------- |
+| 获取个人信息 | /user/getUser?userId=      | get      |
+| 修改个人信息 | /user/editUser             | put      |
+| 增加收货地址 | /user/addAddress           | post     |
+| 删除收货地址 | /user/deleteAddress        | put      |
+| 增加观影人   | /user/addAttender          | post     |
+| 删除观影人   | /user/deleteAttender       | put      |
+| 确认订单     | /user/confirmOrder         | post     |
+| 支付订单     | /user/payOrder             | put      |
+| 查询订单列表 | /user/getOrderList?userId= | get      |
 
 #### 1. 获取用户详情api
 
 接口说明：获取个人详细信息，包括地址列表，联系人列表
 
-接口地址：http://xiaomai.flyme.ink/user/getUser?userId=
+接口地址：http://xiaomai.flyme.ink/api/user/getUser?userId=
 
 请求方式：get
 
@@ -473,37 +475,44 @@
 
 ```json
 {
+  "code": 0,
   "data": {
     "addresses": [
       {
-        "addressId": 1,
-        "detail": "江西省",
-        "name": "钟小浩",
-        "phone": "15079084000",
-        "userId": 10
+        "addressId": 2,
+        "detail": "上海普陀",
+        "isDelete": 0,
+        "name": "钟小浩2",
+        "phone": "1579083386",
+        "userId": 8
       }
     ],
     "attenders": [
       {
         "id": 1,
-        "identityNum": "360502200210010033",
+        "identityNum": "360502199810030022",
         "identityType": "身份证",
-        "name": "虚伪鱼",
-        "userId": 10
+        "isDelete": 0,
+        "name": "观影人1",
+        "userId": 8
+      },
+      {
+        "id": 2,
+        "identityNum": "360502199810030022",
+        "identityType": "身份证",
+        "isDelete": 0,
+        "name": "观影人2",
+        "userId": 8
       }
     ],
-    "birthday": 1621224586000,
-    "gender": 1,
-    "identity": "360502200010050033",
-    "nickname": "测试账户",
-    "password": "111",
+    "gender": 0,
+    "password": "123456ecnu",
     "privilege": 0,
-    "uid": 10,
-    "username": "test2"
+    "uid": 8,
+    "username": "zzzz76"
   },
-  "success": true,
-  "message": "请求成功",
-  "code": 0
+  "message": "操作成功",
+  "success": true
 }
 ```
 
@@ -531,7 +540,7 @@
 
 接口说明：前段提交表单，后端限制访问权限，并修改个人信息
 
-接口地址：http://xiaomai.flyme.ink/user/editUser
+接口地址：http://xiaomai.flyme.ink/api/user/editUser
 
 请求方式：put
 
@@ -582,7 +591,7 @@
 
 #### 3. 增加收货地址api
 
-接口地址：http://xiaomai.flyme.ink/user/addAddress
+接口地址：http://xiaomai.flyme.ink/api/user/addAddress
 
 请求方式：post
 
@@ -601,13 +610,14 @@
 {
   "code": 0,
   "data": {
-    "addressId": 4,
+    "addressId": 2,
     "detail": "上海普陀",
+    "isDelete": 0,
     "name": "钟小浩2",
     "phone": "1579083386",
-    "userId": 10
+    "userId": 8
   },
-  "message": "提交成功",
+  "message": "操作成功",
   "success": true
 }
 ```
@@ -626,15 +636,15 @@
 
 #### 4. 删除收货地址api
 
-接口地址：http://xiaomai.flyme.ink/user/deleteAddress?addressId=
+接口地址：http://xiaomai.flyme.ink/api/user/deleteAddress
 
-请求方式：delete
+请求方式：put
 
 接口请求参数
 
 | 参数名称  | 参数位置 | 类型 | 说明   |
 | --------- | -------- | ---- | ------ |
-| addressId | query    | Int  | 地址Id |
+| addressId | body     | Int  | 地址Id |
 
 返回示例1：
 
@@ -660,7 +670,7 @@
 
 #### 5. 增加观影人api
 
-接口地址：http://xiaomai.flyme.ink/user/addAttender
+接口地址：http://xiaomai.flyme.ink/api/user/addAttender
 
 请求方式：post
 
@@ -679,13 +689,14 @@
 {
   "code": 0,
   "data": {
-    "id": 2,
+    "id": 1,
     "identityNum": "360502199810030022",
     "identityType": "身份证",
+    "isDelete": 0,
     "name": "观影人1",
-    "userId": 10
+    "userId": 8
   },
-  "message": "提交成功",
+  "message": "操作成功",
   "success": true
 }
 ```
@@ -704,15 +715,15 @@
 
 #### 6. 删除观影人api
 
-接口地址：http://xiaomai.flyme.ink/user/deleteAttender?attenderId=
+接口地址：http://xiaomai.flyme.ink/api/user/deleteAttender
 
-请求方式：delete
+请求方式：put
 
 接口请求参数
 
 | 参数名称   | 参数位置 | 类型 | 说明     |
 | ---------- | -------- | ---- | -------- |
-| attenderId | query    | Int  | 观影人Id |
+| attenderId | body     | Int  | 观影人Id |
 
 返回示例1：
 
@@ -736,32 +747,76 @@
 
 
 
-#### 7. 确认门票api
+#### 7. 确认订单api
 
-接口说明：选取票档数量，后端返回门票信息
-
-接口地址：http://xiaomai.flyme.ink/user/confirmTicket
+接口地址：http://xiaomai.flyme.ink/api/user/confirmOrder
 
 请求方式：post
 
 接口请求参数
 
-| 参数名称 | 参数位置 | 类型 | 说明   |
-| -------- | -------- | ---- | ------ |
-| levelId  | body     | Int  | 票档Id |
-| count    | body     | Int  | 数量   |
+| 参数名称    | 参数位置 | 类型   | 说明              |
+| ----------- | -------- | ------ | ----------------- |
+| userId      | body     | Int    | 用户Id            |
+| linkman     | body     | String | 联系人            |
+| linknum     | body     | String | 联系电话          |
+| addressId   | body     | Int    | 收货地址Id        |
+| attenderIds | body     | String | 观影人Id列表: 1,2 |
+| levelId     | body     | Int    | 票档Id            |
+| count       | body     | Int    | 数量              |
 
-返回示例1：
+返回示例：
 
 ```json
 {
   "code": 0,
   "data": {
-    "leftCount": 80,
-    "levelId": 1,
-    "limitCount": 6,
-    "name": "套票69.9元（艺术馆+解压馆）",
-    "price": "69",
+    "address": "{\"addressId\":2,\"detail\":\"上海普陀\",\"isDelete\":0,\"name\":\"钟小浩2\",\"phone\":\"1579083386\",\"userId\":8}",
+    "attender": "[{\"id\":1,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"isDelete\":0,\"name\":\"观影人1\",\"userId\":8}]",
+    "code": "uC7dXrofb0VtTKljIo",
+    "createTime": 1621385198700,
+    "linkNum": "15079086666",
+    "linkman": "zhong",
+    "orderId": 4,
+    "showId": 1,
+    "status": 0,
+    "statusInfo": "待付款",
+    "totalCount": 2,
+    "totalPrice": "138",
+    "userId": 8
+  },
+  "message": "操作成功",
+  "success": true
+}
+```
+
+
+
+#### 8. 支付订单api
+
+接口地址：http://xiaomai.flyme.ink/api/user/payOrder
+
+请求方式：put
+
+接口请求参数
+
+| 参数名称 | 参数位置 | 类型 | 说明   |
+| -------- | -------- | ---- | ------ |
+| orderId  | body     | Int  | 订单Id |
+
+返回示例：
+
+```json
+{
+  "code": 0,
+  "data": {
+    "address": "{\"addressId\":2,\"detail\":\"上海普陀\",\"isDelete\":0,\"name\":\"钟小浩2\",\"phone\":\"1579083386\",\"userId\":8}",
+    "attender": "[{\"id\":1,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"isDelete\":0,\"name\":\"观影人1\",\"userId\":8}]",
+    "code": "v6sYHb4Kkc4wxdI0uA",
+    "createTime": 1621384983000,
+    "linkNum": "15079086666",
+    "linkman": "zhong",
+    "orderId": 3,
     "show": {
       "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
       "program": {
@@ -784,91 +839,24 @@
       "time": 1612836000000
     },
     "showId": 1,
-    "tickets": [
-      {
-        "levelId": 1,
-        "price": "69",
-        "ticketId": 24,
-        "valid": 0
-      },
-      {
-        "levelId": 1,
-        "price": "69",
-        "ticketId": 22,
-        "valid": 0
-      },
-      {
-        "levelId": 1,
-        "price": "69",
-        "ticketId": 23,
-        "valid": 0
-      }
-    ],
-    "totalCount": 80
-  },
-  "message": "提交成功",
-  "success": true
-}
-```
-
-返回示例2：
-
-```json
-{
-  "code": 200,
-  "message": "操作失败",
-  "success": false
-}
-```
-
-
-
-#### 8. 确认订单api
-
-接口地址：http://xiaomai.flyme.ink/user/confirmOrder
-
-请求方式：post
-
-接口请求参数
-
-| 参数名称  | 参数位置 | 类型   | 说明        |
-| --------- | -------- | ------ | ----------- |
-| userId    | body     | Int    | 用户Id      |
-| linkman   | body     | String | 联系人      |
-| linknum   | body     | String | 联系电话    |
-| attenders | body     | String | 观影人: 1,2 |
-| levelId   | body     | Int    | 票档Id      |
-| count     | body     | Int    | 数量        |
-
-返回示例：
-
-```json
-{
-  "code": 0,
-  "data": {
-    "attender": "[{\"id\":1,\"identityNum\":\"360502200210010033\",\"identityType\":\"身份证\",\"name\":\"虚伪鱼\",\"userId\":10},{\"id\":2,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"name\":\"观影人1\",\"userId\":10}]",
-    "code": "PsM7SvMF7hJrDIENoJ",
-    "createTime": 1621337234823,
-    "linkNum": "15079086666",
-    "linkman": "zhong",
-    "orderId": 2,
-    "showId": 1,
-    "status": 0,
-    "statusInfo": "待付款",
+    "status": 1,
+    "statusInfo": "交易成功",
     "totalCount": 2,
     "totalPrice": "138",
-    "userId": 10
+    "userId": 8
   },
-  "message": "提交成功",
+  "message": "操作成功",
   "success": true
 }
 ```
 
 
 
-#### 8. 查询订单列表api
 
-接口地址：http://xiaomai.flyme.ink/user/getOrderList?userId=
+
+#### 9. 查询订单列表api
+
+接口地址：http://xiaomai.flyme.ink/api/user/getOrderList?userId=
 
 请求方式：get
 
@@ -885,44 +873,10 @@
   "code": 0,
   "data": [
     {
-      "attender": "",
-      "code": "DYB8NALwjs",
-      "createTime": 1621336407000,
-      "linkNum": "15079086666",
-      "linkman": "zhong",
-      "orderId": 1,
-      "show": {
-        "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
-        "program": {
-          "address": "湖滨银泰in77(D区负二楼)",
-          "categoryId": 3,
-          "cityId": 3,
-          "detail": "演出介绍...",
-          "endTime": 1621046100000,
-          "explain": "不支持退票...",
-          "highPrice": "69",
-          "image": "damFile/program/637879137617.jpg",
-          "lowPrice": "29",
-          "notice": "需要提前入场...",
-          "pid": 1,
-          "startTime": 1620873300000,
-          "title": "【杭州】星空恋爱解压馆（湖滨银泰in77旗舰店）"
-        },
-        "programId": 1,
-        "showId": 1,
-        "time": 1612836000000
-      },
-      "showId": 1,
-      "status": 0,
-      "statusInfo": "待付款",
-      "totalCount": 2,
-      "totalPrice": "138",
-      "userId": 10
-    },
-    {
-      "attender": "[{\"id\":1,\"identityNum\":\"360502200210010033\",\"identityType\":\"身份证\",\"name\":\"虚伪鱼\",\"userId\":10},{\"id\":2,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"name\":\"观影人1\",\"userId\":10}]",
-      "code": "PsM7SvMF7hJrDIENoJ",
-      "createTime": 1621337235000,
+      "address": "null",
+      "attender": "[{\"id\":1,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"isDelete\":0,\"name\":\"观影人1\",\"userId\":8}]",
+      "code": "gd0skLMWiunr91lKEy",
+      "createTime": 1621384921000,
       "linkNum": "15079086666",
       "linkman": "zhong",
       "orderId": 2,
@@ -952,25 +906,51 @@
       "statusInfo": "待付款",
       "totalCount": 2,
       "totalPrice": "138",
-      "userId": 10
+      "userId": 8
+    },
+    {
+      "address": "{\"addressId\":2,\"detail\":\"上海普陀\",\"isDelete\":0,\"name\":\"钟小浩2\",\"phone\":\"1579083386\",\"userId\":8}",
+      "attender": "[{\"id\":1,\"identityNum\":\"360502199810030022\",\"identityType\":\"身份证\",\"isDelete\":0,\"name\":\"观影人1\",\"userId\":8}]",
+      "code": "v6sYHb4Kkc4wxdI0uA",
+      "createTime": 1621384983000,
+      "linkNum": "15079086666",
+      "linkman": "zhong",
+      "orderId": 3,
+      "show": {
+        "name": "2021.02.09-2021.05.31 10:00-22:00（21:30停止入场）",
+        "program": {
+          "address": "湖滨银泰in77(D区负二楼)",
+          "categoryId": 3,
+          "cityId": 3,
+          "detail": "演出介绍...",
+          "endTime": 1621046100000,
+          "explain": "不支持退票...",
+          "highPrice": "69",
+          "image": "damFile/program/637879137617.jpg",
+          "lowPrice": "29",
+          "notice": "需要提前入场...",
+          "pid": 1,
+          "startTime": 1620873300000,
+          "title": "【杭州】星空恋爱解压馆（湖滨银泰in77旗舰店）"
+        },
+        "programId": 1,
+        "showId": 1,
+        "time": 1612836000000
+      },
+      "showId": 1,
+      "status": 0,
+      "statusInfo": "待付款",
+      "totalCount": 2,
+      "totalPrice": "138",
+      "userId": 8
     }
   ],
-  "message": "提交成功",
+  "message": "操作成功",
   "success": true
 }
 ```
 
 
-
-接口请求参数
-
-查询订单列表
-
-获取订单
-
-增加订单
-
-修改订单状态
 
 ### 三、管理员功能模块
 
@@ -989,7 +969,7 @@
 
 接口说明：前段提交表单，后端限制访问权限
 
-接口地址：http://xiaomai.flyme.ink/admin/addProgram
+接口地址：http://xiaomai.flyme.ink/api/admin/addProgram
 
 请求方式：post
 
@@ -1044,7 +1024,7 @@
 
 接口说明：前段提交表单，后端限制访问权限
 
-接口地址：http://xiaomai.flyme.ink/admin/addShow
+接口地址：http://xiaomai.flyme.ink/api/admin/addShow
 
 请求方式：post
 
@@ -1090,7 +1070,7 @@
 
 接口说明：前段提交表单，后端限制访问权限
 
-接口地址：http://xiaomai.flyme.ink/admin/addLevel
+接口地址：http://xiaomai.flyme.ink/api/admin/addLevel
 
 请求方式：post
 
@@ -1142,7 +1122,7 @@
 
 接口说明：前段输入大麦网节目编号，后端完成节目爬取
 
-接口地址：http://xiaomai.flyme.ink/admin/damaiCrawl?code=
+接口地址：http://xiaomai.flyme.ink/api/admin/damaiCrawl?code=
 
 请求方式：get
 
