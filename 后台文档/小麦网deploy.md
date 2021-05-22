@@ -1,4 +1,4 @@
-## 小麦后端部署文档
+## damai后端部署文档
 
 说明：部署项目只需参考第二部分（部署war包）
 
@@ -8,6 +8,8 @@ System: Ubuntu16.04
 
 Java: openjdk version "1.8.0_252"
 
+Maven: Apache Maven 3.6.3
+
 Mysql: Ver 14.14 Distrib 5.7.30
 
 Redis server: v=3.0.6
@@ -15,6 +17,8 @@ Redis server: v=3.0.6
 nginx: version nginx/1.10.3 (Ubuntu)
 
 Tomcat: apache tomcat 8.5.53
+
+Docker: version 20.10.6
 
 ### 二、部署war包
 
